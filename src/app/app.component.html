@@ -1,0 +1,75 @@
+<!-- <router-outlet></router-outlet> -->
+<div id="main">
+    <div class="main-vote">
+        <form class="form_main" *ngIf="isForm">
+            <p class="heading">Xin chào quý khách</p>
+            <p class="description">Vui lòng để lại thông tin để giúp chúng tôi quản lý số lượt bình chọn tốt hơn</p>
+            <div class="inputContainer">
+                <div class="form-group">
+                    <label>Họ và Tên</label>
+                    <input type="text" class="form-control input-lg inputField" />
+                </div>
+            </div>
+            <div class="inputContainer">
+                <div class="form-group">
+                    <label>Số điện thoại</label>
+                    <input type="text" class="form-control input-lg inputField" />
+                </div>
+            </div>
+            <div class="inputContainer">
+                <div class="form-group">
+                    <label>Số ghế</label>
+                    <input type="number" class="form-control input-lg inputField" />
+                </div>
+            </div>
+            <button id="button" (click)="onSubmitForm()">Submit</button>
+        </form>
+        <div class="vote-list" *ngIf="isVote">
+            <div class="title">
+                <p>Bình chọn ứng viên</p>
+            </div>
+            <div class="persons">
+                <div class="person" *ngFor="let per of person" (click)="onVote()">
+                    <div class="card">
+                        <img class="img" src="../assets/avt.png">
+                        <div class="textBox">
+                            <div class="textContent">
+                                <p class="h1">{{per.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result" *ngIf="isResult">
+            <div class="title">
+                <p>Kết quả bình chọn</p>
+            </div>
+            <div class="persons">
+                <div class="person" *ngFor="let per of person">
+                    <div class="card">
+                        <img class="img" src="../assets/avt.png">
+                        <div class="textBox">
+                            <div class="textContent">
+                                <p class="h1">{{per.name}}</p>
+                            </div>
+                        </div>
+                         <div class="total-vote">
+                            <p>{{per.totalVote}}</p>
+                        </div>
+                        <div class="plus-point">
+                            <p>+{{per.plus}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="loading" *ngIf="isLoading">
+            <div class="three-body">
+                <div class="three-body__dot"></div>
+                <div class="three-body__dot"></div>
+                <div class="three-body__dot"></div>
+            </div>
+        </div>
+    </div>
+</div>
